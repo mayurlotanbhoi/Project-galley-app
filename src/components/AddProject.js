@@ -11,16 +11,17 @@ import {
   DialogTitle,
   DialogContent,
   TextareaAutosize,
+  CircularProgress,
 } from "@mui/material";
 import React, { useState, useContext } from "react";
-
+import { toast, ToastContainer } from "react-toastify";
 import SendIcon from "@mui/icons-material/Send";
 
 import { useSelector } from "react-redux";
 import { Revderer } from "../App";
 const AddPeoject = ({ open, setOpen }) => {
   const [file, setFile] = useState(null);
-  // const [Statuse, setStatuse] = useState(null);
+  const [openD, setOpenD] = useState(false);
   const { data } = useSelector((state) => state.user);
 
   const { Refreshe, setRefreshe } = useContext(Revderer);
@@ -37,6 +38,7 @@ const AddPeoject = ({ open, setOpen }) => {
 
   const submit = async (e) => {
     e.preventDefault();
+    setOpenD(true);
 
     const formdata = new FormData();
 
@@ -56,18 +58,42 @@ const AddPeoject = ({ open, setOpen }) => {
     });
 
     const data = await res.json();
+
+    setOpenD(false);
+    toast.success(`PROJECT ADDED  !`, {
+      position: toast.POSITION.TOP_CENTER,
+    });
     setRefreshe(!Refreshe);
     handleClose();
   };
 
   return (
     <>
+
+<ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
+      {/* Same as */}
+      <ToastContainer />
+
+      <Dialog open={openD}>
+        <CircularProgress disableShrink />
+      </Dialog>
+
       <Dialog open={open} onClose={handleClose}>
         <DialogTitle>Add Project</DialogTitle>
         <DialogContent>
           <DialogContentText>
-            To subscribe to this website, please enter your email address here.
-            We will send updates occasionally.
+           To add you project, Enter your project Deatails here,
           </DialogContentText>
 
           <Box>
