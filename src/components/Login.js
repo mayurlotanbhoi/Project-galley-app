@@ -34,7 +34,7 @@ const Login = () => {
       password: e.target.password.value,
     };
 
-    fetch("http://localhost:8000/user/login", {
+    fetch("https://server-api-2hpl.onrender.com/user/login", {
       method: "POST",
       body: JSON.stringify(loginData),
       credentials: "include",

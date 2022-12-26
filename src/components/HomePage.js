@@ -34,7 +34,7 @@ const HomePage = () => {
     const fetch = async () => {
       setOpenD(true);
       const project = await FetchData(
-        "http://localhost:8000/user/allProject/" + pages
+        "https://server-api-2hpl.onrender.com/user/allProject/" + pages
       );
       setFetchedData(project.allProject);
 
@@ -53,7 +53,7 @@ const HomePage = () => {
 
     if (email) {
       const project = await FetchData(
-        "http://localhost:8000/user/serchProject/" + email
+        "https://server-api-2hpl.onrender.com/user/serchProject/" + email
       );
       setFetchedData(project.allProject);
       settotal(project.total);

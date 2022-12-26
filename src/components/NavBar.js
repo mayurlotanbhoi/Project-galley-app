@@ -49,7 +49,7 @@ const NavBar = () => {
     //   .catch((error) => console.log(error));
     const fetch = async () => {
       setOpenD(true);
-      const res = await FetchData("http://localhost:8000/user/logout");
+      const res = await FetchData("https://server-api-2hpl.onrender.com/user/logout");
 
       if (res.massege === "logout") {
         navigation("/login");
