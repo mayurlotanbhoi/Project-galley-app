@@ -85,7 +85,7 @@ const Registation = () => {
         <CircularProgress disableShrink />
       </Dialog>
 
-      <Box sx={{ display: "flex", alignItems: "center", height: "90vh",mt: "50px", }}>
+      <Box sx={{ display: "flex", alignItems: "center", height: "120%", mt: "50px", }}>
         <Paper
           elevation={10}
           sx={{
