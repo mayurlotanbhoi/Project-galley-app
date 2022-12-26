@@ -70,7 +70,11 @@ const AddPeoject = ({ open, setOpen }) => {
   return (
     <>
 
-<ToastContainer
+
+
+      <Dialog open={open} onClose={handleClose}>
+
+      <ToastContainer
         position="top-center"
         autoClose={5000}
         hideProgressBar={false}
@@ -89,7 +93,7 @@ const AddPeoject = ({ open, setOpen }) => {
         <CircularProgress disableShrink />
       </Dialog>
 
-      <Dialog open={open} onClose={handleClose}>
+
         <DialogTitle>Add Project</DialogTitle>
         <DialogContent>
           <DialogContentText>
