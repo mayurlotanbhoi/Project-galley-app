@@ -85,7 +85,7 @@ const HomePage = () => {
           >
             <InputBase
               sx={{ ml: 1, flex: 1 }}
-              placeholder="Search Project B Email"
+              placeholder="Search Project By Email"
               inputProps={{ "aria-label": "search google maps" }}
               onChange={(e) => setEmail(e.target.value)}
             />
