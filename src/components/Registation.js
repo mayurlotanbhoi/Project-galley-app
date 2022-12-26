@@ -85,7 +85,7 @@ const Registation = () => {
         <CircularProgress disableShrink />
       </Dialog>
 
-      <Box sx={{ display: "flex", alignItems: "center", height: "90vh" }}>
+      <Box sx={{ display: "flex", alignItems: "center", height: "90vh",mt: "50px", }}>
         <Paper
           elevation={10}
           sx={{
@@ -93,7 +93,7 @@ const Registation = () => {
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
-            maxWidth: "80vw",
+            maxWidth: "90vw",
           }}
         >
           <Avatar
@@ -108,7 +108,7 @@ const Registation = () => {
             }
           ></Avatar>
           <form onSubmit={submit} enctype="mulTipart/form-data" method="POST">
-            <Stack direction="row" flexWrap="wrap" gap="20px">
+            <Stack direction="row" flexWrap="wrap" gap="20px" height="120%">
               <TextField
                 variant="outlined"
                 label="Name.."

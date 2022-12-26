@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import Card from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";
@@ -14,12 +14,14 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkIcon from "@mui/icons-material/Link";
 
 import { Box } from "@mui/system";
-import { Button, Hidden, Pagination, Tooltip } from "@mui/material";
+import { Button, CircularProgress, Dialog, Hidden, Pagination, Tooltip } from "@mui/material";
 import { Link } from "react-router-dom";
 import { aboutme } from "../Redux/Slicers/GetUserSlicer";
 import { useDispatch, useSelector } from "react-redux";
 import WorkspacePremiumIcon from "@mui/icons-material/WorkspacePremium";
 import { toast, ToastContainer } from "react-toastify";
+
+
 
 export default function ProjectCard({
   Avatars,
@@ -30,8 +32,9 @@ export default function ProjectCard({
   setpages,
 }) {
   const { userData, data } = useSelector((state) => state.user);
+  const [open, setOpen] = useState(false);
 
-  console.log(userData);
+  // console.log(userData);
 
   const dispatch = useDispatch();
 
@@ -43,6 +46,7 @@ export default function ProjectCard({
   const makePublicProject = async (project) => {
     project.Avatar = Avatars;
     project.userdata = { ...data };
+    setOpen(true);
 
     console.log(" project id " + project._id);
     console.log("use id" + project.userdata._id);
@@ -56,7 +60,7 @@ export default function ProjectCard({
       },
     });
     await res.json();
-
+    setOpen(false);
     toast.success("PROJECT PUBLISHED", {
       position: toast.POSITION.TOP_CENTER,
     });
@@ -78,6 +82,10 @@ export default function ProjectCard({
       />
       {/* Same as */}
       <ToastContainer />
+
+      <Dialog open={open}>
+        <CircularProgress disableShrink />
+      </Dialog>
 
       <>
         <div
