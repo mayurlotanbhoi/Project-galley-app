@@ -230,13 +230,12 @@ export default function ProjectCard({
       {/* {console.log(+(totalPage / 9 + 1).toFixed(0))} */}
       {!Avatars ? (
         <Pagination
-          count={+(totalPage / 9 + 1).toFixed(0)}
+          count={(+totalPage / 9 + 1).toFixed(0)}
           variant="outlined"
           shape="rounded"
           onChange={handleChangePage}
           color={"primary"}
-          sx={{ position: "sticky" }}
-          zIndex="9999"
+          
         />
       ) : (
         ""
