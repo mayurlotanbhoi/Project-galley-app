@@ -299,7 +299,7 @@ const Portfolio = () => {
                         TECH-STATCK
                       </Typography>
                       <Typography ml="20px">
-                        {About?.project?.Stack} year
+                        {About?.project?.Stack}
                       </Typography>
                     </Box>
 
