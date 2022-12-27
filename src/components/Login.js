@@ -67,6 +67,7 @@ const Login = () => {
           toast.error(`${data.massege} !`, {
             position: toast.POSITION.TOP_CENTER,
           });
+          setOpen(false);
         }
       })
       .catch((error) => {
@@ -133,6 +134,7 @@ const Login = () => {
                 autoFocus={true}
                 onChange={(e) => setError(false)}
                 error={error}
+                sx={{ mb: "15px" }}
               />
               <TextField
                 variant="outlined"
@@ -141,6 +143,7 @@ const Login = () => {
                 type="password"
                 error={error}
                 onChange={(e) => setError(false)}
+                sx={{ mb: "15px" }}
               />
               <Button type="submit" variant="contained" endIcon={<SendIcon />}>
                 {" "}

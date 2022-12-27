@@ -116,6 +116,7 @@ const Registation = () => {
                 name="name"
                 autoFocus={true}
                 required
+                sx={{ mb: "15px" }}
               />
 
               <TextField
@@ -124,6 +125,7 @@ const Registation = () => {
                 type="email"
                 name="email"
                 required
+                sx={{ mb: "15px" }}
               />
               <TextField
                 variant="outlined"
@@ -134,6 +136,7 @@ const Registation = () => {
                 maxLength={10}
                 minLength={10}
                 required
+                sx={{ mb: "15px" }}
               />
               <TextField
                 variant="outlined"
@@ -142,6 +145,7 @@ const Registation = () => {
                 name="Expriance"
                 // autoFocus={true}
                 required
+                sx={{ mb: "15px" }}
               />
               <TextField
                 variant="outlined"
@@ -150,6 +154,7 @@ const Registation = () => {
                 name="Field"
                 // autoFocus={true}
                 required
+                sx={{ mb: "15px" }}
               />
 
               <TextField
@@ -159,6 +164,7 @@ const Registation = () => {
                 name="Education"
                 // autoFocus={true}
                 required
+                sx={{ mb: "15px" }}
               />
 
               <TextField
@@ -167,6 +173,7 @@ const Registation = () => {
                 label="password.."
                 name="password"
                 required
+                sx={{ mb: "15px" }}
               />
 
               <TextField
@@ -175,6 +182,7 @@ const Registation = () => {
                 label="About-Me.."
                 name="About"
                 required
+                sx={{ mb: "15px" }}
               />
 
               <TextField
@@ -183,6 +191,7 @@ const Registation = () => {
                 label="Tech-Stack.."
                 name="Tech"
                 required
+                sx={{ mb: "15px" }}
               />
 
               <TextField
@@ -191,6 +200,7 @@ const Registation = () => {
                 label="Current-Comp.."
                 name="Comp"
                 required
+                sx={{ mb: "15px" }}
               />
               <TextField
                 variant="outlined"
@@ -198,6 +208,7 @@ const Registation = () => {
                 label="Current-Post.."
                 name="Post"
                 required
+                sx={{ mb: "15px" }}
               />
 
               <TextField
@@ -206,6 +217,7 @@ const Registation = () => {
                 name="myfile"
                 onChange={(e) => setFile(e.target.files[0])}
                 required
+                sx={{ mb: "15px" }}
               />
             </Stack>
             <Box

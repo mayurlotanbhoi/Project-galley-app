@@ -171,6 +171,7 @@ const Portfolio = () => {
                 display: "flex",
                 width: "80%",
                 height: "100%",
+                minWidth: "400px",
               }}
             >
               <Paper elevation={10} sx={{ padding: "20px" }}>
