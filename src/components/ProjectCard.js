@@ -1,9 +1,3 @@
-import React, { useState } from "react";
-
-import Card from "@mui/material/Card";
-import CardHeader from "@mui/material/CardHeader";
-import CardMedia from "@mui/material/CardMedia";
-import CardContent from "@mui/material/CardContent";
 import CardActions from "@mui/material/CardActions";
 
 import Avatar from "@mui/material/Avatar";
@@ -12,16 +6,25 @@ import Typography from "@mui/material/Typography";
 
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkIcon from "@mui/icons-material/Link";
+import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
+import EditIcon from "@mui/icons-material/Edit";
+import { Revderer } from "../App";
+import Editform from "./EditPublicProject.js";
 
 import { Box } from "@mui/system";
-import { Button, CircularProgress, Dialog, Hidden, Pagination, Tooltip } from "@mui/material";
+import {
+  Button,
+  CircularProgress,
+  Dialog,
+  Pagination,
+  Tooltip,
+} from "@mui/material";
 import { Link } from "react-router-dom";
 import { aboutme } from "../Redux/Slicers/GetUserSlicer";
 import { useDispatch, useSelector } from "react-redux";
 import WorkspacePremiumIcon from "@mui/icons-material/WorkspacePremium";
 import { toast, ToastContainer } from "react-toastify";
-
-
+import { updateProject } from "../Redux/Slicers/ProjectIpdate";
 
 export default function ProjectCard({
   Avatars,
@@ -32,9 +35,10 @@ export default function ProjectCard({
   setpages,
 }) {
   const { userData, data } = useSelector((state) => state.user);
+  const { projectData } = useSelector((state) => state.projectUpdate);
   const [open, setOpen] = useState(false);
-
-  // console.log(userData);
+  const { Refreshe, setRefreshe } = useContext(Revderer);
+  const [openform, setopenform] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -48,17 +52,20 @@ export default function ProjectCard({
     project.userdata = { ...data };
     setOpen(true);
 
-    console.log(" project id " + project._id);
-    console.log("use id" + project.userdata._id);
+    // console.log(" project id " + project._id);
+    // console.log("use id" + project.userdata._id);
 
-    const res = await fetch("https://server-api-2hpl.onrender.com/user/public", {
-      method: "POST",
-      body: JSON.stringify(project),
-      credentials: "include",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    const res = await fetch(
+      "https://server-api-2hpl.onrender.com/user/public",
+      {
+        method: "POST",
+        body: JSON.stringify(project),
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
     await res.json();
     setOpen(false);
     toast.success("PROJECT PUBLISHED", {
@@ -66,8 +73,32 @@ export default function ProjectCard({
     });
   };
 
+  const DeleteProjectFun = async (projectObject) => {
+    dispatch(updateProject({ ...projectObject }));
+
+    const { _id } = { ...projectObject };
+    const res = await fetch(
+      "https://server-api-2hpl.onrender.com/user/public/Project/delete/" + _id,
+      {
+        method: "delete",
+        credentials: "include",
+      }
+    );
+    const sms = await res.json();
+    toast.success(`${sms.massege}`, {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    setRefreshe(!Refreshe);
+  };
+
+  const updateProjectFun = async (projectObject) => {
+    dispatch(updateProject({ ...projectObject }));
+    setopenform(!openform);
+  };
+
   return (
     <>
+      <Editform openform={openform} setopenform={setopenform} />
       <ToastContainer
         position="top-center"
         autoClose={5000}
@@ -196,6 +227,34 @@ export default function ProjectCard({
                             </Tooltip>
                           </Box>
 
+                          {/* ****************************************************************** */}
+
+                          {project.email === data.email && !Avatars ? (
+                            <Box>
+                              <Tooltip title="Delete project " arrow>
+                                <IconButton
+                                  aria-label="github"
+                                  onClick={() => DeleteProjectFun(project)}
+                                >
+                                  <DeleteForeverIcon color="primary" />
+                                </IconButton>
+                              </Tooltip>
+
+                              <Tooltip title="Edit Project" arrow>
+                                <IconButton
+                                  aria-label="github"
+                                  onClick={() => updateProjectFun(project)}
+                                >
+                                  <EditIcon color="primary" />
+                                </IconButton>
+                              </Tooltip>
+                            </Box>
+                          ) : (
+                            ""
+                          )}
+
+                          {/* ***************  ******************************** */}
+
                           {/* {console.log(project.accessibility)} */}
 
                           {Avatars ? (
@@ -235,7 +294,6 @@ export default function ProjectCard({
           shape="rounded"
           onChange={handleChangePage}
           color={"primary"}
-          
         />
       ) : (
         ""

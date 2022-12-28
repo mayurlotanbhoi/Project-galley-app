@@ -6,3 +6,4 @@ export { default as Myproject } from "./MyProject";
 export { default as AddProject } from "./AddProject";
 export { default as ABoutME } from "./AboutUser";
 export { default as Portfolio } from "./Portfolio";
+export { default as EditForm } from "./EditPublicProject.js";
