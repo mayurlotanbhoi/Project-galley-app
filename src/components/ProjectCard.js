@@ -46,6 +46,8 @@ export default function ProjectCard({
   const { Refreshe, setRefreshe } = useContext(Revderer);
   const [openform, setopenform] = useState(false);
 
+  const [prompt, setprompt] = useState(false);
+
   const dispatch = useDispatch();
 
   const handleChangePage = (event, newPage) => {
@@ -80,29 +82,52 @@ export default function ProjectCard({
   };
 
   const DeleteProjectFun = async (projectObject) => {
-    setOpen(true);
-    dispatch(updateProject({ ...projectObject }));
+    const deletionvalidation = DeletionConfermattion(projectObject.titel);
 
-    const { _id } = { ...projectObject };
-    const res = await fetch(
-      "https://server-api-2hpl.onrender.com/user/public/Project/delete/" + _id,
-      {
-        method: "delete",
-        credentials: "include",
-      }
-    );
-    const sms = await res.json();
-    setOpen(false);
-    toast.success(`${sms.massege}`, {
-      position: toast.POSITION.TOP_CENTER,
-    });
-    setRefreshe(!Refreshe);
+    if (deletionvalidation) {
+      setOpen(true);
+      dispatch(updateProject({ ...projectObject }));
+      const { _id } = { ...projectObject };
+      const res = await fetch(
+        "https://server-api-2hpl.onrender.com/user/public/Project/delete/" +
+          _id,
+        {
+          method: "delete",
+          credentials: "include",
+        }
+      );
+      const sms = await res.json();
+      setOpen(false);
+      toast.success("Project Deleted", {
+        position: toast.POSITION.TOP_CENTER,
+      });
+      setRefreshe(!Refreshe);
+    } else {
+      toast.warning("Project Name Note Match", {
+        position: toast.POSITION.TOP_CENTER,
+      });
+    }
   };
 
   const updateProjectFun = async (projectObject) => {
     dispatch(updateProject({ ...projectObject }));
     setopenform(!openform);
   };
+
+  function DeletionConfermattion(projectnameD) {
+    let projectname = window.prompt(
+      `Please enter your project Name->: ${projectnameD}`
+    );
+    if (
+      projectname == null ||
+      projectname == "" ||
+      projectname !== projectnameD
+    ) {
+      return false;
+    } else {
+      return true;
+    }
+  }
 
   return (
     <>
@@ -125,6 +150,8 @@ export default function ProjectCard({
       <Dialog open={open}>
         <CircularProgress disableShrink />
       </Dialog>
+
+      <Dialog open={prompt}></Dialog>
 
       <>
         <div

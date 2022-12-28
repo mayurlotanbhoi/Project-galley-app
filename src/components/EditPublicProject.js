@@ -13,6 +13,7 @@ import {
   CircularProgress,
   Typography,
   Stack,
+  DialogTitle,
 } from "@mui/material";
 
 // import { updateProject } from "../Redux/Slicers/ProjectIpdate";
@@ -77,37 +78,13 @@ const EditpublicProject = ({ openform, setopenform }) => {
 
     const data = await res.json();
     setOpenD(false);
-    setOpenD(false);
-    toast.success(`PROJECT updated`, {
+
+    toast.success(`PROJECT UPDATED`, {
       position: toast.POSITION.TOP_CENTER,
     });
-    setRefreshe(!Refreshe);
     handleClose();
+    setRefreshe(!Refreshe);
   };
-
-  //   const DeleteProjectFun = async (projectObject) => {
-
-  //         dispatch(updateProject({ ...projectObject }));
-  //         const { _id } = { ...projectObject };
-  //         const res = await fetch(
-  //           "http://localhost:8000/user/public/Project/update/:id,
-  //           {
-  //             method: "update",
-  //             credentials: "include",
-  //             headers: {
-  //               "Content-Type": "application/json",
-  //             },
-  //           }
-  //         );
-  //         const sms = await res.json();
-
-  //         toast.success(`${sms.massege}`, {
-  //           position: toast.POSITION.TOP_CENTER,
-  //         });
-  //         setRefreshe(!Refreshe);
-  //         // window.location.reload(true);
-  //         console.log(_id);
-  //       };
 
   return (
     <>
@@ -131,11 +108,10 @@ const EditpublicProject = ({ openform, setopenform }) => {
           <CircularProgress disableShrink />
         </Dialog>
 
-        {/* <DialogTitle>Add Project</DialogTitle> */}
+        <DialogTitle>Edit Your Project Here</DialogTitle>
         <DialogContent>
           <DialogContentText>
-            To subscribe to this website, please enter your email address here.
-            We will send updates occasionally.
+            To edit this project edite deteails here, It will may take sam time
           </DialogContentText>
 
           <Box>
@@ -146,7 +122,7 @@ const EditpublicProject = ({ openform, setopenform }) => {
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
-                maxWidth: "80vw",
+                maxWidth: "100vw",
               }}
             >
               <Avatar
@@ -165,16 +141,14 @@ const EditpublicProject = ({ openform, setopenform }) => {
               {Object.keys(projectData).length > 1 ? (
                 <form onSubmit={submit} method="put">
                   {console.log(email)}
-                  <Stack sx={{ display: "flex", flexWrap: "wrap" }} gap="20px">
+                  <Stack direction="row" flexWrap="wrap" gap="20px">
                     <TextField
                       variant="outlined"
                       label="email.."
                       type="email"
                       name="email"
-                      // value={email}
-                      // onChange={(e) => setemail(e.target.value)}
                       defaultValue={projectData?.email}
-                      autoFocus={true}
+                      sx={{ mb: "15px" }}
                       required
                     />
                     <TextField
@@ -182,29 +156,11 @@ const EditpublicProject = ({ openform, setopenform }) => {
                       label="ProjectTilet.."
                       type="text"
                       name="titel"
-                      // value={titel}
-                      // onChange={(e) => settitel(e.target.value)}
                       defaultValue={projectData.titel}
                       autoFocus={true}
                       required
+                      sx={{ mb: "15px" }}
                     />
-
-                    {/* <TextField
-                    required
-                    id="outlined-required"
-                    label="Start date"
-                    type="text"
-                    name="Sdate"
-                    value={projectData.email}
-                  />
-                  <TextField
-                    required
-                    id="outlined-required"
-                    label="end date"
-                    type="text"
-                    name="Edate"
-                    value={projectData.email}
-                  /> */}
 
                     <TextField
                       variant="outlined"
@@ -216,6 +172,7 @@ const EditpublicProject = ({ openform, setopenform }) => {
                       // value={TStack}
                       // onChange={(e) => setStack(e.target.value)}
                       defaultValue={projectData.Stack}
+                      sx={{ mb: "15px" }}
                     />
 
                     <TextField
@@ -231,6 +188,7 @@ const EditpublicProject = ({ openform, setopenform }) => {
                       value={Github}
                       onChange={(e) => setGithub(e.target.value)}
                       defaultValue={projectData.Github}
+                      sx={{ mb: "15px" }}
                     />
                     <TextField
                       variant="outlined"
@@ -242,8 +200,7 @@ const EditpublicProject = ({ openform, setopenform }) => {
                         title: "Include http://",
                       }}
                       required
-                      // value={Projectlink}
-                      // onChange={(e) => setProjectLink(e.target.value)}
+                      sx={{ mb: "15px" }}
                       defaultValue={projectData.Projectlink}
                     />
                     <TextareaAutosize
@@ -257,18 +214,9 @@ const EditpublicProject = ({ openform, setopenform }) => {
                       name="discre"
                       required
                       style={{ maxWidth: "450px", minWidth: "200px" }}
-                      // value={Description}
-                      // onChange={(e) => setDescription(e.target.value)}
+                      sx={{ mb: "15px" }}
                       defaultValue={projectData.Description}
                     />
-
-                    {/* <TextField
-                    variant="outlined"
-                    type="file"
-                    name="myfile"
-                    onChange={(e) => setFile(e.target.files[0])}
-                    required
-                  /> */}
                   </Stack>
                   <Box
                     sx={{
