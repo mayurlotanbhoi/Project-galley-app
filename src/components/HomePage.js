@@ -72,7 +72,7 @@ const HomePage = () => {
         <CircularProgress disableShrink />
       </Dialog>
 
-      <div style={{ marginTop: "50px" }}>
+      <div style={{ marginTop: "-70px" }}>
         <div>
           <Paper
             component="form"
