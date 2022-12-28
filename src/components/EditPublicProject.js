@@ -48,7 +48,7 @@ const EditpublicProject = ({ openform, setopenform }) => {
 
     const formdata = new FormData();
 
-    console.log(e.target.email.value);
+    // console.log(e.target.email.value);
 
     formdata.append("titel", e.target.titel.value);
     formdata.append("email", e.target.email.value);
@@ -62,7 +62,7 @@ const EditpublicProject = ({ openform, setopenform }) => {
 
     console.log(JSON.stringify(formdata));
     const value = Object.fromEntries(formdata.entries());
-    console.log(value);
+    // console.log(value);
     const res = await fetch(
       "https://server-api-2hpl.onrender.com/user/public/Project/update/" + _id,
       {
