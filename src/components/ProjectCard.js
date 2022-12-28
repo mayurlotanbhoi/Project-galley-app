@@ -1,3 +1,9 @@
+import React, { useState, useContext } from "react";
+
+import Card from "@mui/material/Card";
+import CardHeader from "@mui/material/CardHeader";
+import CardMedia from "@mui/material/CardMedia";
+import CardContent from "@mui/material/CardContent";
 import CardActions from "@mui/material/CardActions";
 
 import Avatar from "@mui/material/Avatar";
@@ -74,6 +80,7 @@ export default function ProjectCard({
   };
 
   const DeleteProjectFun = async (projectObject) => {
+    setOpen(true);
     dispatch(updateProject({ ...projectObject }));
 
     const { _id } = { ...projectObject };
@@ -85,6 +92,7 @@ export default function ProjectCard({
       }
     );
     const sms = await res.json();
+    setOpen(false);
     toast.success(`${sms.massege}`, {
       position: toast.POSITION.TOP_CENTER,
     });
@@ -289,7 +297,7 @@ export default function ProjectCard({
       {/* {console.log(+(totalPage / 9 + 1).toFixed(0))} */}
       {!Avatars ? (
         <Pagination
-          count={(+totalPage / 9).toFixed(0)}
+          count={Math.ceil(+(totalPage / 9)).toFixed(0)}
           variant="outlined"
           shape="rounded"
           onChange={handleChangePage}
