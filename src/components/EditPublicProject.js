@@ -25,7 +25,6 @@ import { Revderer } from "../App";
 import { toast, ToastContainer } from "react-toastify";
 
 const EditpublicProject = ({ openform, setopenform }) => {
-  //   const [file, setFile] = useState(null);
   const [openD, setOpenD] = useState(false);
   const { data } = useSelector((state) => state.user);
   const { Refreshe, setRefreshe } = useContext(Revderer);
@@ -33,11 +32,7 @@ const EditpublicProject = ({ openform, setopenform }) => {
   const { projectData } = useSelector((state) => state.projectUpdate);
 
   const [email, setemail] = useState(projectData?.email);
-  const [titel, settitel] = useState(projectData?.titel);
   const [Github, setGithub] = useState(projectData?.Github);
-  const [Projectlink, setProjectLink] = useState(projectData?.Projectlink);
-  const [Description, setDescription] = useState(projectData?.Description);
-  const [TStack, setStack] = useState(projectData?.Stack);
 
   const handleClose = () => {
     setopenform(false);
@@ -60,14 +55,13 @@ const EditpublicProject = ({ openform, setopenform }) => {
 
     // dispatch(updateProject({ ...projectObject }));
     const { _id } = { ...projectData };
-
     console.log(JSON.stringify(formdata));
     const value = Object.fromEntries(formdata.entries());
-    // console.log(value);
+
     const res = await fetch(
       "https://server-api-2hpl.onrender.com/user/public/Project/update/" + _id,
       {
-        method: "put",
+        method: "patch",
         body: JSON.stringify(value),
         credentials: "include",
         headers: {
