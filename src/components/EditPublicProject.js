@@ -61,7 +61,7 @@ const EditpublicProject = ({ openform, setopenform }) => {
     const res = await fetch(
       "https://server-api-2hpl.onrender.com/user/public/Project/update/" + _id,
       {
-        method: "patch",
+        method: "post",
         body: JSON.stringify(value),
         credentials: "include",
         headers: {
