@@ -139,7 +139,7 @@ const EditpublicProject = ({ openform, setopenform }) => {
                 }
               ></Avatar>
               {Object.keys(projectData).length > 1 ? (
-                <form onSubmit={submit} method="put">
+                <form onSubmit={submit} method="patch">
                   {console.log(email)}
                   <Stack direction="row" flexWrap="wrap" gap="20px">
                     <TextField
