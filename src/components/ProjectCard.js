@@ -103,7 +103,7 @@ export default function ProjectCard({
       });
       setRefreshe(!Refreshe);
     } else {
-      toast.warning("Project Name Note Match", {
+      toast.warning("Project Name Not Match", {
         position: toast.POSITION.TOP_CENTER,
       });
     }
