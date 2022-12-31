@@ -13,6 +13,7 @@ import React, { useState } from "react";
 import SendIcon from "@mui/icons-material/Send";
 import { useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
+import loader from "./loader.gif";
 
 const Registation = () => {
   const [file, setFile] = useState(null);
@@ -40,10 +41,13 @@ const Registation = () => {
     formdata.append("About", e.target.About.value);
     formdata.append("Mob", e.target.Mob.value);
 
-    const res = await fetch("https://server-api-2hpl.onrender.com/user/register", {
-      method: "POST",
-      body: formdata,
-    });
+    const res = await fetch(
+      "https://server-api-2hpl.onrender.com/user/register",
+      {
+        method: "POST",
+        body: formdata,
+      }
+    );
 
     const data = await res.json();
 
@@ -82,10 +86,22 @@ const Registation = () => {
       <ToastContainer />
 
       <Dialog open={open}>
-        <CircularProgress disableShrink />
+        <img
+          src={loader}
+          backgroundColor="transparent"
+          width="80px"
+          height="80px"
+        />
       </Dialog>
 
-      <Box sx={{ display: "flex", alignItems: "center", height: "120%", mt: "50px", }}>
+      <Box
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          height: "120%",
+          mt: "50px",
+        }}
+      >
         <Paper
           elevation={10}
           sx={{
@@ -183,6 +199,7 @@ const Registation = () => {
                 name="About"
                 required
                 sx={{ mb: "15px" }}
+                inputProps={{ minLength: 60 }}
               />
 
               <TextField

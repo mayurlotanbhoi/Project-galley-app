@@ -36,7 +36,15 @@ function App() {
 
   return (
     <>
-      <Box sx={{ width: "80%", m: "80px" }}>
+      <Box
+        sx={{
+          width: "100%",
+          // ml: "150px",
+          mt: "80px",
+          display: "flex",
+          justifyContent: "center",
+        }}
+      >
         <Collapse in={open}>
           <Alert
             severity="warning"

@@ -16,6 +16,7 @@ import {
 import React, { useState, useContext } from "react";
 import { toast, ToastContainer } from "react-toastify";
 import SendIcon from "@mui/icons-material/Send";
+import loader from "./loader.gif";
 
 import { useSelector } from "react-redux";
 import { Revderer } from "../App";
@@ -52,10 +53,13 @@ const AddPeoject = ({ open, setOpen }) => {
     formdata.append("Description", e.target.discre.value);
     formdata.append("Stack", e.target.Stack.value);
 
-    const res = await fetch("https://server-api-2hpl.onrender.com/user/projectadd", {
-      method: "POST",
-      body: formdata,
-    });
+    const res = await fetch(
+      "https://server-api-2hpl.onrender.com/user/projectadd",
+      {
+        method: "POST",
+        body: formdata,
+      }
+    );
 
     const data = await res.json();
 
@@ -69,35 +73,35 @@ const AddPeoject = ({ open, setOpen }) => {
 
   return (
     <>
-
-
-
       <Dialog open={open} onClose={handleClose}>
+        <ToastContainer
+          position="top-center"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+        />
+        {/* Same as */}
+        <ToastContainer />
 
-      <ToastContainer
-        position="top-center"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="light"
-      />
-      {/* Same as */}
-      <ToastContainer />
-
-      <Dialog open={openD}>
-        <CircularProgress disableShrink />
-      </Dialog>
-
+        <Dialog open={openD}>
+          <img
+            src={loader}
+            backgroundColor="transparent"
+            width="80px"
+            height="80px"
+          />
+        </Dialog>
 
         <DialogTitle>Add Project</DialogTitle>
         <DialogContent>
           <DialogContentText>
-           To add you project, Enter your project Deatails here,
+            To add you project, Enter your project Deatails here,
           </DialogContentText>
 
           <Box>
@@ -138,6 +142,7 @@ const AddPeoject = ({ open, setOpen }) => {
                     value={data.email}
                     autoFocus={true}
                     required
+                    sx={{ mb: "15px" }}
                   />
                   <TextField
                     variant="outlined"
@@ -146,6 +151,7 @@ const AddPeoject = ({ open, setOpen }) => {
                     name="titel"
                     autoFocus={true}
                     required
+                    sx={{ mb: "15px" }}
                   />
 
                   <TextField
@@ -154,6 +160,7 @@ const AddPeoject = ({ open, setOpen }) => {
                     label="Start date"
                     type="text"
                     name="Sdate"
+                    sx={{ mb: "15px" }}
                   />
                   <TextField
                     required
@@ -161,6 +168,7 @@ const AddPeoject = ({ open, setOpen }) => {
                     label="end date"
                     type="text"
                     name="Edate"
+                    sx={{ mb: "15px" }}
                   />
 
                   <TextField
@@ -170,6 +178,7 @@ const AddPeoject = ({ open, setOpen }) => {
                     name="Stack"
                     // autoFocus={true}
                     required
+                    sx={{ mb: "15px" }}
                   />
 
                   <TextField
@@ -182,6 +191,7 @@ const AddPeoject = ({ open, setOpen }) => {
                       title: "Include https://github.com/",
                     }}
                     required
+                    sx={{ mb: "15px" }}
                   />
                   <TextField
                     variant="outlined"
@@ -193,6 +203,7 @@ const AddPeoject = ({ open, setOpen }) => {
                       title: "Include http://",
                     }}
                     required
+                    sx={{ mb: "15px" }}
                   />
                   <TextareaAutosize
                     aria-label="sminimum height"
@@ -204,7 +215,8 @@ const AddPeoject = ({ open, setOpen }) => {
                     label="Project Link.."
                     name="discre"
                     required
-                    style={{ maxWidth: "450px", minWidth: "200px" }}
+                    inputProps={{ minLength: 60 }}
+                    style={{ maxWidth: "450px", minWidth: "200px", mb: "15px" }}
                   />
 
                   <TextField
@@ -213,6 +225,7 @@ const AddPeoject = ({ open, setOpen }) => {
                     name="myfile"
                     onChange={(e) => setFile(e.target.files[0])}
                     required
+                    sx={{ mb: "15px" }}
                   />
                 </Stack>
                 <Box

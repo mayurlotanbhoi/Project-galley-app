@@ -20,6 +20,7 @@ import { logout, removedata } from "../Redux/Slicers/GetUserSlicer";
 import { useSelector, useDispatch } from "react-redux";
 import FetchData from "./FetchFunction";
 import { toast, ToastContainer } from "react-toastify";
+import loader from "./loader.gif";
 
 const NavBar = () => {
   const [menu, setmenu] = useState(false);
@@ -49,7 +50,9 @@ const NavBar = () => {
     //   .catch((error) => console.log(error));
     const fetch = async () => {
       setOpenD(true);
-      const res = await FetchData("https://server-api-2hpl.onrender.com/user/logout");
+      const res = await FetchData(
+        "https://server-api-2hpl.onrender.com/user/logout"
+      );
 
       if (res.massege === "logout") {
         navigation("/login");
@@ -85,7 +88,12 @@ const NavBar = () => {
       <ToastContainer />
 
       <Dialog open={openD}>
-        <CircularProgress disableShrink />
+        <img
+          src={loader}
+          backgroundColor="transparent"
+          width="80px"
+          height="80px"
+        />
       </Dialog>
 
       <AppBar position="fixed" color="primary">
@@ -153,7 +161,7 @@ const NavBar = () => {
 
                 <MenuItem>
                   <Link to="/registation">
-                    <Typography>REGISTATION</Typography>
+                    <Typography>REGISRATION</Typography>
                   </Link>
                 </MenuItem>
                 <MenuItem>

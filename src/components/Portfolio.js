@@ -16,7 +16,7 @@ import EmailIcon from "@mui/icons-material/Email";
 import AcUnitIcon from "@mui/icons-material/AcUnit";
 import PersonIcon from "@mui/icons-material/Person";
 import AssignmentTurnedInIcon from "@mui/icons-material/AssignmentTurnedIn";
-import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
+// import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkIcon from "@mui/icons-material/Link";
 
@@ -41,7 +41,9 @@ const Portfolio = () => {
           <Box
             sx={{
               flexWrap: { xs: "wrap", md: "nowrap" },
-              m: "50px",
+              ml: "50px",
+              mr: "50px",
+              mt: "-80px",
               display: "flex",
               width: "100vw",
               height: "100%",
@@ -217,7 +219,7 @@ const Portfolio = () => {
                     YEAR OF EXPERIANCE
                   </Typography>
                   <Typography ml="20px">
-                    {About?.project.userdata?.experiance} year
+                    {About?.project.userdata?.experiance} YEAR
                   </Typography>
                 </Box>
                 <Box sx={{ mb: "20px" }}>
@@ -285,7 +287,7 @@ const Portfolio = () => {
 
                   <Box sx={{ display: "flex", justifyContent: "space-evenly" }}>
                     <Box sx={{ mb: "20px" }}>
-                      <CalendarMonthIcon
+                      <AcUnitIcon
                         fontSize="medium"
                         sx={{ mr: "10px" }}
                         color="primary"
@@ -298,9 +300,7 @@ const Portfolio = () => {
                       >
                         TECH-STATCK
                       </Typography>
-                      <Typography ml="20px">
-                        {About?.project?.Stack}
-                      </Typography>
+                      <Typography ml="20px">{About?.project?.Stack}</Typography>
                     </Box>
 
                     <Box sx={{ mb: "20px" }}>

@@ -14,7 +14,7 @@ import "react-toastify/dist/ReactToastify.css";
 import React, { useState } from "react";
 import LockOpenIcon from "@mui/icons-material/LockOpen";
 import SendIcon from "@mui/icons-material/Send";
-import CloseIcon from "@mui/icons-material/Close";
+import loader from "./loader.gif";
 
 import { useNavigate } from "react-router-dom";
 import { display } from "@mui/system";
@@ -93,7 +93,12 @@ const Login = () => {
       <ToastContainer />
 
       <Dialog open={open}>
-        <CircularProgress disableShrink />
+        <img
+          src={loader}
+          backgroundColor="transparent"
+          width="80px"
+          height="80px"
+        />
       </Dialog>
 
       <Box

@@ -17,12 +17,14 @@ import {
 } from "@mui/material";
 
 // import { updateProject } from "../Redux/Slicers/ProjectIpdate";
+// const loader = require("../")
 
 import SendIcon from "@mui/icons-material/Send";
 
 import { useSelector } from "react-redux";
 import { Revderer } from "../App";
 import { toast, ToastContainer } from "react-toastify";
+import loader from "./loader.gif";
 
 const EditpublicProject = ({ openform, setopenform }) => {
   const [openD, setOpenD] = useState(false);
@@ -98,8 +100,13 @@ const EditpublicProject = ({ openform, setopenform }) => {
         {/* Same as */}
         <ToastContainer />
 
-        <Dialog open={openD}>
-          <CircularProgress disableShrink />
+        <Dialog open={openD} sx={{ color: "none" }}>
+          <img
+            src={loader}
+            backgroundColor="transparent"
+            width="80px"
+            height="80px"
+          />
         </Dialog>
 
         <DialogTitle>Edit Your Project Here</DialogTitle>
@@ -162,6 +169,7 @@ const EditpublicProject = ({ openform, setopenform }) => {
                       type="text"
                       name="Stack"
                       // autoFocus={true}
+                      inputProps={{ maxLength: 37 }}
                       required
                       // value={TStack}
                       // onChange={(e) => setStack(e.target.value)}
@@ -201,6 +209,7 @@ const EditpublicProject = ({ openform, setopenform }) => {
                       aria-label="sminimum height"
                       minRows={3}
                       // maxLength={120}
+                      inputProps={{ minLength: 60 }}
                       minLength={50}
                       placeholder="Project Description"
                       type="text"
