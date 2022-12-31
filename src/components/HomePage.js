@@ -3,18 +3,11 @@ import React, { useState, useEffect, useContext, lazy, Suspense } from "react";
 import { Revderer } from "../App";
 import CircularProgress from "@mui/material/CircularProgress";
 import FetchData from "./FetchFunction";
-import {
-  Dialog,
-  Divider,
-  IconButton,
-  InputBase,
-  Paper,
-  TableSortLabel,
-  Typography,
-} from "@mui/material";
+import { Dialog, Divider, IconButton, InputBase, Paper } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
-import FetchFunck from "./FetchFunction";
+
 import { Box } from "@mui/system";
+import loader from "./loader.gif";
 
 const ProjectCard = lazy(() => import("./ProjectCard"));
 
@@ -37,9 +30,7 @@ const HomePage = () => {
         "https://server-api-2hpl.onrender.com/user/allProject/" + pages
       );
       setFetchedData(project.allProject);
-
       setfiltered(project.allProject);
-
       settotal(project.total);
       setRefTotal(project.total);
       setOpenD(false);
@@ -69,10 +60,15 @@ const HomePage = () => {
     // .hasOwnProperty("Avatar")
     <>
       <Dialog open={openD}>
-        <CircularProgress disableShrink />
+        <img
+          src={loader}
+          backgroundColor="transparent"
+          width="80px"
+          height="80px"
+        />
       </Dialog>
 
-      <div style={{ marginTop: "-70px" }}>
+      <div style={{ marginTop: "-50px" }}>
         <div>
           <Paper
             component="form"
