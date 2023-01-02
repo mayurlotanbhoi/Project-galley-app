@@ -70,6 +70,16 @@ const NavBar = () => {
     fetch();
   };
 
+  const openAddProjectForm = () => {
+    if (Object.keys(data).length > 1) {
+      setOpen(!open);
+    } else {
+      toast.warning("Your Not Login !", {
+        position: toast.POSITION.TOP_CENTER,
+      });
+    }
+  };
+
   return (
     <>
       <ToastContainer
@@ -115,7 +125,7 @@ const NavBar = () => {
             }}
           >
             <Box>
-              <IconButton onClick={() => setOpen(!open)}>
+              <IconButton onClick={() => openAddProjectForm()}>
                 {" "}
                 <Typography id="myproject">ADD PROJECT</Typography>
               </IconButton>
