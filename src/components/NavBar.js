@@ -74,7 +74,7 @@ const NavBar = () => {
     if (Object.keys(data).length > 1) {
       setOpen(!open);
     } else {
-      toast.warning("Your Are Not Login !", {
+      toast.warning("You Are Not Login !", {
         position: toast.POSITION.TOP_CENTER,
       });
     }
