@@ -171,7 +171,11 @@ const NavBar = () => {
 
                 <MenuItem>
                   <Link to="/registation">
-                    <Typography>REGISRATION</Typography>
+                    {Object.keys(data).length < 2 ? (
+                      <Typography>REGISRATION</Typography>
+                    ) : (
+                      <Typography>MY-PROFILE</Typography>
+                    )}
                   </Link>
                 </MenuItem>
                 <MenuItem>

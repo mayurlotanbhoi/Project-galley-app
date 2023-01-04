@@ -21,7 +21,9 @@ const MyProject = () => {
 
   useEffect(() => {
     const fetch = async () => {
-      const project = await FetchData("https://server-api-2hpl.onrender.com/user/mayProject");
+      const project = await FetchData(
+        "https://server-api-2hpl.onrender.com/user/mayProject"
+      );
 
       // console.log(project);
 
@@ -39,7 +41,7 @@ const MyProject = () => {
 
   useEffect(() => {
     const checkLogin = () => {
-      if (Object.keys(data).length === 0) {
+      if (Object.keys(data).length < 2) {
         window.alert("To ACCES THIS PAGE YOU NEED TO LOGIN FIRST");
 
         navigate("/login");

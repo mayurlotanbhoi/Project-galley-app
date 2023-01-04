@@ -64,7 +64,7 @@ const Login = () => {
           }, 5000);
           setOpen(false);
         } else {
-          toast.error(`${data.massege} !`, {
+          toast.error(`$ Wrong Credentials !`, {
             position: toast.POSITION.TOP_CENTER,
           });
           setOpen(false);
