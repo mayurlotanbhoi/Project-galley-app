@@ -50,11 +50,20 @@ const HomePage = () => {
       settotal(project.total);
 
       console.log(project);
-    } else {
+    } 
+    // else {
+    //   setFetchedData(filtered);
+    //   settotal(refTotal);
+    // }
+  };
+
+  useEffect(() => {
+    if (!email) {
       setFetchedData(filtered);
       settotal(refTotal);
     }
-  };
+  }, [email]);
+  
 
   return (
     // .hasOwnProperty("Avatar")
