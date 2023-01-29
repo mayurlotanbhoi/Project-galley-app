@@ -63,7 +63,7 @@ function App() {
             sx={{ mb: 2 }}
           >
             This website deploys on a free server, might be possible to take
-            some time please be a pension,
+            some time please be a patience,
           </Alert>
         </Collapse>
       </Box>
